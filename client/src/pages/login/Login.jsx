@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./Login.css";
 const Login = () => {
   const loginAuth = (e) => {
@@ -10,8 +10,29 @@ const Login = () => {
       email: email.value,
       password: password.value,
     };
-    console.log(verify_user);
+    fetch("http://localhost:4000/login", {
+      method: "POST",
+      body: JSON.stringify(verify_user),
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        alert(data.msg);
+        if (data.msg === "Success!") {
+          localStorage.setItem("token", data.token);
+          if (localStorage.getItem("token")) {
+            window.location = "/";
+          } else {
+            alert("Token not available!");
+            window.location = "/login";
+          }
+        }
+      });
   };
+  let history = useHistory();
+
   return (
     <div className="login-wrapper">
       <h1>Login</h1>
@@ -45,6 +66,9 @@ const Login = () => {
           Register
         </Link>
       </div>
+      {localStorage.getItem("token")
+        ? history.push("/")
+        : history.push("/login")}
     </div>
   );
 };

@@ -5,13 +5,24 @@ const Register = () => {
   const registerAuth = (e) => {
     e.preventDefault();
     let { name, email, verify_email, password } = e.target;
-    // let register_user = {
-    //   name: name.value,
-    //   email: email.value,
-    //   password: password.value,
-    // };
+    let register_user = {
+      name: name.value,
+      email: email.value,
+      password: password.value,
+    };
     if (email.value === verify_email.value) {
-      // fetching code
+      fetch("http://localhost:4000/register", {
+        method: "POST",
+        body: JSON.stringify(register_user),
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          alert(data.msg);
+          window.location = "/login";
+        });
     } else {
       alert("Your email doesn't match");
     }

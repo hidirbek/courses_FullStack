@@ -3,25 +3,27 @@ const jwt = require("jsonwebtoken");
 const { read_file, write_file } = require("../fs/fs_api");
 let userData = read_file("jwt.json");
 
-let Todo = {
+let Course = {
   GET: (req, res) => {
     let { id } = userData[0];
-    let todos = read_file("todos.json").filter((user) => user.user_id === id);
-    res.status(200).json(todos);
+    let courses = read_file("courses.json").filter(
+      (user) => user.user_id === id
+    );
+    res.status(200).json(courses);
   },
 
   CREATE: async (req, res) => {
     try {
       let { id } = userData[0];
-      let todos = read_file("todos.json");
+      let courses = read_file("courses.json");
 
-      todos.push({
+      courses.push({
         id: uuid.v4(),
         user_id: id,
         ...req.body,
       });
 
-      write_file("todos.json", todos);
+      write_file("courses.json", todos);
 
       res.status(201).send({
         msg: "Created Course!",
@@ -32,11 +34,11 @@ let Todo = {
   },
 
   UPDATE: (req, res) => {
-    let todos = read_file("todos.json");
+    let courses = read_file("courses.json");
 
     const { title, price, author } = req.body;
 
-    todos.forEach((course) => {
+    courses.forEach((course) => {
       if (course.id === req.params.id) {
         course.title = title ? title : course.title;
         course.price = price ? price : course.price;
@@ -44,7 +46,7 @@ let Todo = {
       }
     });
 
-    write_file("todos.json", todos);
+    write_file("courses.json", courses);
 
     res.status(200).send({
       msg: "Updated course!",
@@ -52,17 +54,17 @@ let Todo = {
   },
 
   DELETE: (req, res) => {
-    let todos = read_file("todos.json");
+    let courses = read_file("courses.json");
 
     const { title, price, author } = req.body;
 
-    todos.forEach((course, idx) => {
+    courses.forEach((course, idx) => {
       if (course.id === req.params.id) {
-        todos.splice(idx, 1);
+        courses.splice(idx, 1);
       }
     });
 
-    write_file("todos.json", todos);
+    write_file("courses.json", courses);
 
     res.status(200).send({
       msg: "Deleted course!",
@@ -70,4 +72,4 @@ let Todo = {
   },
 };
 
-module.exports = Todo;
+module.exports = Course;

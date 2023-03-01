@@ -1,70 +1,33 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
-
+import { BsTrash } from "react-icons/bs";
+import { FaEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const Home = () => {
-  const [update, setUpdate] = useState(false);
-  const createTodo = (e) => {
-    e.preventDefault();
-
-    const { title } = e.target;
-
-    fetch("http://localhost:3000/", {
-      method: "POST",
-      body: JSON.stringify({
-        title: title.value,
-      }),
-    }).then((res) => {
-      res.json();
-      if (res.ok) {
-        setUpdate((prev) => !prev);
-        title.value = "";
-      }
-    });
-  };
-  const [todos, setTodos] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/")
-      .then((res) => res.json())
-      .then((todo) => setTodos(todo));
-  }, [update]);
-
-  // const checkboxChanged = (e)=> {
-  //   // const [check, setCheck] = useState(false)
-  //   console.log(e.target);
-  // }
-
   return (
-    <div className="main-container">
-      <div className="container-home">
-        <form className="site-form" onSubmit={(e) => createTodo(e)}>
-          <input
-            required
-            name="title"
-            className="input"
-            type="text"
-            placeholder="New task..."
-          />
-        </form>
-        <div className="task-category">
-          <p className="category-links">All</p>
-          <p className="category-links">Active</p>
-          <p className="category-links">Completed</p>
-        </div>
-        <div className="task-wrapper">
-          {todos.map((el) => {
-            return (
-              <div key={el.id} className="tasks">
-                <input
-                  /*onChange={(e)=>checkboxChanged(e)} checked={el.checked} */ className="checkbox"
-                  type="checkbox"
-                />
-                <p className="todo-title">{el.title}</p>
-              </div>
-            );
-          })}
-        </div>
-      </div>
+    <div>
+      <h1>Created courses</h1>
+      <table className="site-table">
+        <tbody>
+          <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Author</th>
+            <th>Action</th>
+          </tr>
+          <tr>
+            <td>nodejs</td>
+            <td>12000</td>
+            <td>ism familya</td>
+            <td>
+              <BsTrash />
+              <FaEdit />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <Link className="all__courses-link">All Courses</Link>
+      <button>Create course</button>
     </div>
   );
 };

@@ -1,0 +1,34 @@
+.register-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+}
+.register-from{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+
+}
+
+.register_input-name, .register__input-email, .register__input-password, .register__input, .register__submit-btn{
+  padding: 10px 8px;
+  outline: none;
+  border: none;
+  border: 1px solid dodgerblue ;
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 5px;
+}
+.register__submit-btn{
+  background: #5da5ec;
+  width: 103%;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+.register__submit-btn:hover{
+  background:#3f9af5;
+  cursor: pointer;
+}

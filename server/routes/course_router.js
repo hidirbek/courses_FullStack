@@ -1,12 +1,12 @@
 const { Router } = require("express");
-const TodoCtrl = require("../controller/todo_controller");
+const courseCtrl = require("../controller/course_controller");
 const authMid = require("../middleware/auth_middleware");
 
 let router = Router();
 
-router.get("/todos", TodoCtrl.GET);
-router.post("/todos", TodoCtrl.CREATE);
-router.put("/todos/:id", TodoCtrl.UPDATE);
-router.delete("/delete_todo/:id", TodoCtrl.DELETE);
+router.get("/courese", courseCtrl.GET);
+router.post("/courses", courseCtrl.CREATE);
+router.put("/courses/:id", courseCtrl.UPDATE);
+router.delete("/delete_course/:id", courseCtrl.DELETE);
 
 module.exports = router;

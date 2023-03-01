@@ -11,7 +11,7 @@ const authRouter = require("./routes/auth_router");
 const authMiddleware = require("./middleware/auth_middleware");
 
 dotenv.config();
-const { PORT } = process.env || 4000;
+const { PORT } = process.env || 4040;
 
 const app = express();
 app.use(cors());

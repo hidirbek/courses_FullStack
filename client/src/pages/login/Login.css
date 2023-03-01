@@ -1,0 +1,53 @@
+.login-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+.login-form{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+.login-email,.login-password, .login-btn{
+  padding: 10px 8px;
+  outline: none;
+  border: none;
+  border: 1px solid dodgerblue ;
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.login-btn{
+  background: #5da5ec;
+  width: 103%;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+.login-btn:hover{
+  background:#3f9af5  ;
+  cursor: pointer;
+}
+.login-email:focus, .login-password:focus, .login-btn:focus{
+  box-shadow: 0px 0px 8px 3px dodgerblue;
+
+
+}
+.register__link-wrapper{
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.register-link{
+  color: #3d6e9f;
+  text-decoration: none;
+  font-size: 20px;
+  margin-top: 8px;
+}
+.register-link:hover{
+ text-decoration: underline;
+}

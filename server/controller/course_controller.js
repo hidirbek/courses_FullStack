@@ -2,6 +2,7 @@ const uuid = require("uuid");
 const jwt = require("jsonwebtoken");
 const { read_file, write_file } = require("../fs/fs_api");
 let userData = read_file("jwt.json");
+console.log(userData);
 
 let Course = {
   GET: (req, res) => {
@@ -23,7 +24,7 @@ let Course = {
         ...req.body,
       });
 
-      write_file("courses.json", todos);
+      write_file("courses.json", courses);
 
       res.status(201).send({
         msg: "Created Course!",

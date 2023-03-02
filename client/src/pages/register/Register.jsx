@@ -11,7 +11,7 @@ const Register = () => {
       password: password.value,
     };
     if (email.value === verify_email.value) {
-      fetch("http://localhost:4000/register", {
+      fetch("http://localhost:4001/register", {
         method: "POST",
         body: JSON.stringify(register_user),
         headers: {

@@ -54,7 +54,7 @@ th{
   align-items: center;
   justify-content: center;
 }
-.course_title, .course_price, .course_author{
+.course_title, .course_price, .course_author, .create-btn{
   padding: 10px 8px;
   outline: none;
   border: none;
@@ -62,4 +62,18 @@ th{
   margin-top: 10px;
   width: 100%;
   border-radius: 5px;
+  font-size: 16px;
+}
+.course_title:focus, .course_price:focus, .course_author:focus{
+  box-shadow: 0px 0px 8px 3px dodgerblue;
+}
+.create-btn{
+  width: 105%;
+  background-color: dodgerblue;
+  color: #fff;
+
+}
+.create-btn:hover{
+  cursor: pointer;
+  background-color: rgb(26, 112, 198);
 }

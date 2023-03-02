@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Home.css";
 import { BsTrash } from "react-icons/bs";
 import { FaEdit } from "react-icons/fa";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
@@ -19,15 +19,44 @@ const style = {
   p: 4,
 };
 const Home = () => {
-  function logOut() {
+  const logOut = () => {
     localStorage.clear();
-  }
+  };
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  // let history = useHistory();
+  const createCourse = (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem("token");
+    let { title, price, author } = e.target;
 
-  // if (localStorage.getItem("token")) {
+    let new_course = {
+      title: title.value,
+      price: price.value,
+      author: author.value,
+    };
+    console.log(new_course);
+    fetch("http://localhost:4001/courses", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: token,
+      },
+      body: JSON.stringify(new_course),
+    })
+      .then((res) => res.json())
+      .then((data) => alert(data.msg));
+  };
+
+  const [courses, setCourses] = useState([]);
+
+  const getUserCourses = () => {
+    fetch("http://localhost:4001/courses")
+      .then((res) => res.json())
+      .then((course) => setCourses(course));
+  };
+  console.log(courses);
+
   return (
     <div className="home-wrapper">
       <h1>Created courses</h1>
@@ -50,16 +79,18 @@ const Home = () => {
           </tr>
         </tbody>
       </table>
-      <button className="create-course_btn">Create course</button>
+      {/* <button className="create-course_btn">Create course</button> */}
       <div className="allcourse-wrapper">
         <Link to="/all_courses" className="all__courses-link">
           All Courses
         </Link>
-        <button className="log-out_btn" onClick={logOut()}>
+        <button className="log-out_btn" onClick={() => logOut()}>
           Log out
         </button>
       </div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button className="create-course_btn" onClick={handleOpen}>
+        Create course
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -67,7 +98,12 @@ const Home = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <form className="create_course-modal">
+          <form
+            onSubmit={(e) => {
+              createCourse(e);
+            }}
+            className="create_course-modal"
+          >
             <h2>Create A Course</h2>
             <input
               className="course_title"
@@ -87,6 +123,9 @@ const Home = () => {
               name="author"
               placeholder="Author of the course"
             />
+            <button className="create-btn" type="submit">
+              Create course
+            </button>
           </form>
         </Box>
       </Modal>

@@ -2,7 +2,7 @@ const uuid = require("uuid");
 const jwt = require("jsonwebtoken");
 const { read_file, write_file } = require("../fs/fs_api");
 let userData = read_file("jwt.json");
-console.log(userData);
+// console.log(userData);
 
 let Course = {
   GET: (req, res) => {

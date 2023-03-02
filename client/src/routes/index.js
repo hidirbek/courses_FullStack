@@ -3,7 +3,6 @@ import { Route } from "react-router-dom";
 import Login from "../pages/login/Login";
 import Home from "../pages/home/Home";
 import Register from "../pages/register/Register";
-import AllCourses from "../pages/allCourses/AllCourses";
 
 const index = () => {
   return (
@@ -13,9 +12,6 @@ const index = () => {
       </Route>
       <Route exact path="/">
         <Home />
-      </Route>
-      <Route exact path="/all_courses">
-        <AllCourses />
       </Route>
       <Route exact path="/register">
         <Register />

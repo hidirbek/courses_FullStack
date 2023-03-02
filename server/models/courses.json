@@ -1,51 +1,23 @@
 [
     {
-        "id": "0ef969c1-6f13-43cb-b44b-aee50b63493d",
-        "user_id": "fa3718be-3be2-48bc-b4a4-958cbdb357ad",
-        "title": "Vuejs",
-        "price": "900000",
-        "author": "Senov Men"
+        "id": "994d1f94-2bae-418e-9e57-930f55778fc3",
+        "user_id": "bd896259-c214-426d-a157-0d4b322bfd8f",
+        "title": "nodejs",
+        "price": "51235",
+        "author": "men"
     },
     {
-        "id": "c08fb695-3064-46ce-a8a4-67c958bb1f52",
-        "user_id": "fa3718be-3be2-48bc-b4a4-958cbdb357ad",
-        "title": "React",
-        "price": "900000",
-        "author": "Senov Men"
+        "id": "c6c6680a-fc95-4fba-81c1-429f4bfafa68",
+        "user_id": "4e65a183-a52b-4b27-8e86-c1f35b80c0ce",
+        "title": "reactjs",
+        "price": "78945",
+        "author": "sen"
     },
     {
-        "id": "e5d62a5f-e5e8-4147-a85a-84debc5bf75e",
-        "user_id": "fa3718be-3be2-48bc-b4a4-958cbdb357ad",
-        "title": "Angular",
-        "price": "900000",
-        "author": "Senov Men"
-    },
-    {
-        "id": "c478fe3f-d8fb-421c-9053-f51264f49617",
-        "user_id": "fa3718be-3be2-48bc-b4a4-958cbdb357ad",
-        "title": "Express",
-        "price": "100000",
-        "author": "Senov Men"
-    },
-    {
-        "id": "3c0b1875-f778-43c9-9e4b-1b37f25f3eff",
-        "user_id": "8d60dfcd-9ff7-4f5b-abfd-737785d51e43",
-        "title": "Nestjs",
-        "price": "20000",
-        "author": "Senov Men"
-    },
-    {
-        "id": "59e969fa-f06d-4090-b1b6-1a93eb0972b4",
-        "user_id": "8d60dfcd-9ff7-4f5b-abfd-737785d51e43",
-        "title": "Fastifyjs",
-        "price": "30000",
-        "author": "Senov Men"
-    },
-    {
-        "id": "d78e3597-d42c-40d6-8534-d1846b50348b",
-        "user_id": "8d60dfcd-9ff7-4f5b-abfd-737785d51e43",
-        "title": "express",
-        "price": "30000",
-        "author": "Senov Men"
+        "id": "273a2c87-fecf-4b9d-8bcb-2604ef1649de",
+        "user_id": "4e65a183-a52b-4b27-8e86-c1f35b80c0ce",
+        "title": "dcs",
+        "price": "54",
+        "author": "zb"
     }
 ]

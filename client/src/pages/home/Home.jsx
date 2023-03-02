@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Home.css";
 import { BsTrash } from "react-icons/bs";
 import { FaEdit } from "react-icons/fa";
@@ -25,6 +25,9 @@ const Home = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [allOpen, setAllOpen] = useState(false);
+  const allHandleOpen = () => setAllOpen(true);
+  const allHandleClose = () => setAllOpen(false);
   const createCourse = (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
@@ -36,7 +39,7 @@ const Home = () => {
       author: author.value,
     };
     console.log(new_course);
-    fetch("http://localhost:4001/courses", {
+    fetch("http://localhost:4040/api/create_courses", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -51,11 +54,21 @@ const Home = () => {
   const [courses, setCourses] = useState([]);
 
   const getUserCourses = () => {
-    fetch("http://localhost:4001/courses")
+    fetch("http://localhost:4040/api/get_courses")
+      .then((res) => res.json())
+      .then((course) => console.log(course));
+  };
+  // console.log(courses);
+
+  const [update, setUpdate] = useState(false);
+  const [allCourses, setAllCourses] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:4040/api/all_courses")
       .then((res) => res.json())
       .then((course) => setCourses(course));
-  };
-  console.log(courses);
+  }, [update]);
+  console.log(allCourses);
 
   return (
     <div className="home-wrapper">
@@ -79,11 +92,7 @@ const Home = () => {
           </tr>
         </tbody>
       </table>
-      {/* <button className="create-course_btn">Create course</button> */}
       <div className="allcourse-wrapper">
-        <Link to="/all_courses" className="all__courses-link">
-          All Courses
-        </Link>
         <button className="log-out_btn" onClick={() => logOut()}>
           Log out
         </button>
@@ -127,6 +136,40 @@ const Home = () => {
               Create course
             </button>
           </form>
+        </Box>
+      </Modal>
+      <Button className="create-course_btn" onClick={allHandleOpen}>
+        All courses
+      </Button>
+      <Modal
+        open={allOpen}
+        onClose={allHandleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <h1>Created courses</h1>
+          <table className="site-table">
+            <tbody>
+              <tr>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Author</th>
+                <th>Action</th>
+              </tr>
+              {/* {courses.map((el) => {
+                <tr key={el.id}>
+                  <td>{el.title}</td>
+                  <td>{el.price}</td>
+                  <td>{el.author}</td>
+                  <td>
+                    <BsTrash />
+                    <FaEdit />
+                  </td>
+                </tr>;
+              })} */}
+            </tbody>
+          </table>
         </Box>
       </Modal>
     </div>

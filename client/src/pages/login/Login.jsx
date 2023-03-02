@@ -10,7 +10,7 @@ const Login = () => {
       email: email.value,
       password: password.value,
     };
-    fetch("http://localhost:4001/login", {
+    fetch("http://localhost:4040/login", {
       method: "POST",
       body: JSON.stringify(verify_user),
       headers: {
